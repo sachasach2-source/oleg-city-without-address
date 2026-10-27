@@ -1,0 +1,61 @@
+{
+  "bytes": 358455033,
+  "sha256": "756ab66461239edc2ffe8e3bf0f4ca5b13a835c56a65574a64efc4a3e2dd9b11",
+  "parts": [
+    {
+      "file": "game-000.bin",
+      "bytes": 33554432,
+      "sha256": "0ffaa3b4fbb22f46bf2df9f5847694e0fd4534130a8ba1a66f9180de091c3fc7"
+    },
+    {
+      "file": "game-001.bin",
+      "bytes": 33554432,
+      "sha256": "066247f8ce62ec7383a84fbf35c7df6d1aa8bfafe802de9ed2be0d14ff0af371"
+    },
+    {
+      "file": "game-002.bin",
+      "bytes": 33554432,
+      "sha256": "84841e7c331913c07e32ed3f3c3e8022456f94bc9f5bf19f34adf39e969464a3"
+    },
+    {
+      "file": "game-003.bin",
+      "bytes": 33554432,
+      "sha256": "838a89c67d46d7edf858928f7a19a4d27ce54c41d94397d5bd88a9fa21c1758c"
+    },
+    {
+      "file": "game-004.bin",
+      "bytes": 33554432,
+      "sha256": "eaac809327a8095dc82450e221a0ec9566848e9311f55657dd57f5ee39fd1859"
+    },
+    {
+      "file": "game-005.bin",
+      "bytes": 33554432,
+      "sha256": "0b2e88fbce2dc101e650673c83e82b5a17adfb9703ab746fc55178b5c1d47555"
+    },
+    {
+      "file": "game-006.bin",
+      "bytes": 33554432,
+      "sha256": "5fb611dc3e3628207a4a48ec650fb583bd327fb74520688da8cb88bae0b5f24b"
+    },
+    {
+      "file": "game-007.bin",
+      "bytes": 33554432,
+      "sha256": "5cf5b054036be3c772b68a0b12e894c6be298e49f0822878e582286b67a3eccb"
+    },
+    {
+      "file": "game-008.bin",
+      "bytes": 33554432,
+      "sha256": "9b154c3fac1a1da4a96c55c1801ba7e2063100bf5afbf33e3fdde75b0185ce90"
+    },
+    {
+      "file": "game-009.bin",
+      "bytes": 33554432,
+      "sha256": "e2bc4e86627d2e3bbab01a91edca54c0c0eea7a46c0ad2aed361448037bf2e75"
+    },
+    {
+      "file": "game-010.bin",
+      "bytes": 22910713,
+      "sha256": "f6488926a9053cedfec9e6c7867ef4d5f0f71adafb1997404c90d176bc408334"
+    }
+  ]
+}
