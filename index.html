@@ -178,7 +178,10 @@
         object-fit: contain;
     }
 
-  </style>
+  /* OLEG_STARTUP_COVER_LAYOUT */
+    #statusDiv {top:auto;bottom:30px;left:auto;right:24px;width:360px;max-width:calc(100% - 48px);min-width:0;border-radius:8px;background:rgba(8,19,26,.88);}
+    #statusProgress {accent-color:#d5b384;height:7px;}
+</style>
 
 </head>
 
@@ -186,7 +189,7 @@
   <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
   <div id="overlayDiv"></div>
 
-  <img id="presplash" src="web-presplash.jpg">
+  <img id="presplash" src="web-presplash.webp">
 
   <div id="ContextContainer">
     <a id="ContextButton">&#8801;</a><br />
@@ -217,7 +220,7 @@
 
   <script>
       // The URL to game.zip, relative to the URL of this file.
-      window.gameZipURL = 'game.zip';
+      window.gameZipURL = 'game.zip?v=259fa0e1582012ef';
 
       // Register the service worker.
       if (navigator.serviceWorker) {
@@ -226,7 +229,7 @@
           }
       }
   </script>
-  <script src="renpy-pre.js?v=1f1a777783768b6c"></script>
+  <script src="renpy-pre.js?v=db2379c2b8114526"></script>
   <script async type="text/javascript" src="renpy.js?v=d19f196abda8e5fa"></script>
 </body>
 

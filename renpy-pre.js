@@ -1,53 +1,3 @@
-/* OLEG_GAME_PARTS */
-/* Join transport chunks before Ren'Py starts; no image placeholders or quality loss. */
-(function (root) {
-    async function fetchParts(zipUrl, manifest, fetcher = fetch) {
-        if (!manifest.parts.length || manifest.parts.some(p =>
-            !/^game-\d{3}(?:-[a-f0-9]{16})?\.bin$/.test(p.file) || !Number.isSafeInteger(p.bytes) || p.bytes <= 0
-        ) || manifest.parts.reduce((n, p) => n + p.bytes, 0) !== manifest.bytes) {
-            throw new Error('Invalid game download manifest');
-        }
-        let index = 0, reader = null, received = 0;
-        const body = new ReadableStream({
-            async pull(controller) {
-                try {
-                    while (index < manifest.parts.length) {
-                        const part = manifest.parts[index];
-                        if (!reader) {
-                            const response = await fetcher(new URL(part.file, zipUrl).href);
-                            if (!response.ok) throw new Error(`${part.file}: HTTP ${response.status}`);
-                            reader = response.body.getReader();
-                            received = 0;
-                        }
-                        const {done, value} = await reader.read();
-                        if (done) {
-                            if (received !== part.bytes) throw new Error(`${part.file}: incomplete download`);
-                            reader.releaseLock();
-                            reader = null;
-                            index++;
-                            continue;
-                        }
-                        received += value.byteLength;
-                        if (received > part.bytes) throw new Error(`${part.file}: unexpected size`);
-                        controller.enqueue(value);
-                        return;
-                    }
-                    controller.close();
-                } catch (error) {
-                    if (reader) await reader.cancel().catch(() => {});
-                    controller.error(error);
-                }
-            },
-            cancel(reason) { return reader ? reader.cancel(reason) : undefined; }
-        });
-        return new Response(body, {headers: {'Content-Length': String(manifest.bytes)}});
-    }
-    const api = {fetchParts};
-    if (typeof module !== 'undefined' && module.exports) module.exports = api;
-    else root.OlegGameDownload = api;
-})(typeof globalThis !== 'undefined' ? globalThis : this);
-
-const OLEG_GAME_PARTS = {"bytes": 670952951, "sha256": "a4781df225ca7ea0304b35953d9bb722a4957d4974fd3d72f543bf0883ad5c94", "parts": [{"file": "game-000-f41cd73f3b6799f7.bin", "bytes": 33554432, "sha256": "f41cd73f3b6799f7f43108017c4828a09a097a074e61f8e496180ffb8ffa5450"}, {"file": "game-001-dd015b76c160e68b.bin", "bytes": 33554432, "sha256": "dd015b76c160e68b02fc0ed294c9ae984628bcd7f6fa4de70ce2a4965c9d9bcc"}, {"file": "game-002-9ad7c1a4ac1216b0.bin", "bytes": 33554432, "sha256": "9ad7c1a4ac1216b09df8f4e7f332bae66c67e3f1fd2b0437347803391c5e734e"}, {"file": "game-003-ce5c4326dda982b6.bin", "bytes": 33554432, "sha256": "ce5c4326dda982b6fd3740df646a3e4a95dd233449fb634a7a2cc16b2cf71323"}, {"file": "game-004-9ef3b0b33294c146.bin", "bytes": 33554432, "sha256": "9ef3b0b33294c1462d0f279b1ef483d6baa94f7c8f85107e7647b561d71920a5"}, {"file": "game-005-99357de80187d847.bin", "bytes": 33554432, "sha256": "99357de80187d847a3b5ec7e0affc3d39e0c333c3e221b0ba99f5f545309fc1b"}, {"file": "game-006-b041aa252cf88e23.bin", "bytes": 33554432, "sha256": "b041aa252cf88e23a9cd6e0f937474b859c625eff455cb64d079ab73ff3b9558"}, {"file": "game-007-07dbad2b4f9af813.bin", "bytes": 33554432, "sha256": "07dbad2b4f9af813074ef614261e442f3a389c8f4255880488b1ee8f7b9b7e85"}, {"file": "game-008-4d2d5a28820b9d03.bin", "bytes": 33554432, "sha256": "4d2d5a28820b9d03235ec4ea180811d62e07ea5e1fff11513a6a758699e79889"}, {"file": "game-009-f375e1bd324d4aa2.bin", "bytes": 33554432, "sha256": "f375e1bd324d4aa2aa8c3e3b1163ec42ec018ae6ce806a6b6214a3e3de4e02bf"}, {"file": "game-010-a85701728ee2bddd.bin", "bytes": 33554432, "sha256": "a85701728ee2bddda74203c88acf3fe6e51fa963d25df26afb715dd55748b436"}, {"file": "game-011-4a83b774632d20f7.bin", "bytes": 33554432, "sha256": "4a83b774632d20f78bcf5e0cd5ff207ee6c0667c5ae68046ea8eb48182406769"}, {"file": "game-012-86794ef04cebda04.bin", "bytes": 33554432, "sha256": "86794ef04cebda04c76997285024b15c331491889c1830f7a1d354c0710d269e"}, {"file": "game-013-085fd0be19490bbb.bin", "bytes": 33554432, "sha256": "085fd0be19490bbb288456187f9d6a0e2ddc1a43d27cded45511d0f203cb60f8"}, {"file": "game-014-b6b9283a3b00bab6.bin", "bytes": 33554432, "sha256": "b6b9283a3b00bab6a0b2a48035253d37cf39b8f9e81b1ef2687924a84ab1d066"}, {"file": "game-015-982bac6fea148a05.bin", "bytes": 33554432, "sha256": "982bac6fea148a05507e97e6860efa04ff6984c3cbabcc8b5f3a96b9172b5809"}, {"file": "game-016-cc5c1b421c831971.bin", "bytes": 33554432, "sha256": "cc5c1b421c8319710597eb3f59aaf5e5e3bc61ed3017f49f724341fed8723758"}, {"file": "game-017-ee07f4d3ab1661bc.bin", "bytes": 33554432, "sha256": "ee07f4d3ab1661bcf6f312302c348819c24ef787e9a60e08104a073a97463dfe"}, {"file": "game-018-ab4efcf7b8d4ab68.bin", "bytes": 33554432, "sha256": "ab4efcf7b8d4ab68a7b9ebd8a93b4b52e3c91c38306a0ff8f30e20d3a0439dd5"}, {"file": "game-019-79829e57e096e1e7.bin", "bytes": 33418743, "sha256": "79829e57e096e1e7751e2597d12a5322def69ad5644af058b88a0c93876eca3b"}]};
 /* OLEG_STORAGE_RECOVERY */
 /* Recover unexpectedly closed Ren'Py IDBFS connections without discarding saves.
  * No database deletion, storage fallback, or suppressed persistence errors.
@@ -470,7 +420,7 @@ Module.preRun = Module.preRun || [ ];
         if (dataDownloaded < dataSize || gameZipSize == 0) {
             if (!dataPrompt) {
                 printMessage("");
-                printMessage("Downloading engine...");
+                printMessage("Загружаем движок…");
                 dataPrompt = true;
             }
 
@@ -480,7 +430,7 @@ Module.preRun = Module.preRun || [ ];
 
         if (!gameZipPrompt) {
             printMessage("");
-            printMessage("Downloading game data...");
+            printMessage("Загружаем начало игры…");
             gameZipPrompt = true;
         }
 
@@ -505,7 +455,7 @@ Module.preRun = Module.preRun || [ ];
     async function loadGameZip() {
 
         try {
-            let response = await OlegGameDownload.fetchParts(new URL(window.gameZipURL, document.baseURI).href, OLEG_GAME_PARTS);
+            let response = await fetch(window.gameZipURL);
 
             if (!response.ok) {
                 reportError("Could not load game.zip: " + response.status + " " + response.statusText);
