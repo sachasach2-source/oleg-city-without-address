@@ -517,6 +517,8 @@ Module.preRun = Module.preRun || [ ];
             let reader = await response.body.getReader();
 
             let f = FS.open('/game.zip', 'w');
+            /* OLEG_ZIP_PREALLOCATION */
+            if (Number.isSafeInteger(gameZipSize) && gameZipSize > 0) FS.allocate(f, 0, gameZipSize);
 
             while (true) {
 
