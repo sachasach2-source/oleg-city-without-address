@@ -1,3 +1,4 @@
+window.OLEG_RHYTHM_BASE = "rhythm-254d07efc456ef9c/";
 /* OLEG_STORAGE_RECOVERY */
 /* Recover unexpectedly closed Ren'Py IDBFS connections without discarding saves.
  * No database deletion, storage fallback, or suppressed persistence errors.

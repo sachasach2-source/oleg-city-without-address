@@ -1,0 +1,38 @@
+[
+  {
+    "file": "body-contact-484000.wav",
+    "author": "Joao_Janz",
+    "title": "Body Slap 1_12",
+    "page": "https://freesound.org/people/Joao_Janz/sounds/484000/",
+    "source": "https://cdn.freesound.org/previews/484/484000_9961300-hq.mp3",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "processing": "Mono downmix, silence trim, gentle 4.2 kHz low-pass, peak normalization to 0.78, edge fades.",
+    "duration": 0.24979166666666666,
+    "peak": 0.78,
+    "sha256": "af2902e6a38f5da91706152233a9a62ef13ffd6639c8f189f643aea13286d8dc"
+  },
+  {
+    "file": "body-contact-484012.wav",
+    "author": "Joao_Janz",
+    "title": "Body Slap 1_8",
+    "page": "https://freesound.org/people/Joao_Janz/sounds/484012/",
+    "source": "https://cdn.freesound.org/previews/484/484012_9961300-hq.mp3",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "processing": "Mono downmix, silence trim, gentle 4.2 kHz low-pass, peak normalization to 0.78, edge fades.",
+    "duration": 0.12285416666666667,
+    "peak": 0.78,
+    "sha256": "615a4b8e7b810518a442e3356a16524ed3f131d8b101384bab9065f484b98d56"
+  },
+  {
+    "file": "touching-wet-skin-521007.mp3",
+    "author": "Sheyvan",
+    "title": "Touching Wet Skin",
+    "page": "https://freesound.org/people/Sheyvan/sounds/521007/",
+    "source": "https://cdn.freesound.org/previews/521/521007_3248005-hq.mp3",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "sha256": "d1c66ac81aece525b7c68920d678a1466129ced4862c6be591e0c013afeb89f5"
+  }
+]
